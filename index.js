@@ -1,6 +1,7 @@
 // Module imports
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const pug = require('pug');
 const sql = require('mssql');
@@ -43,6 +44,8 @@ app.use('/fonts', express.static('assets'));
 app.use('/images', express.static('assets/images'));
 app.use('/css', express.static('assets/css'));
 app.use('/js', express.static('assets/js'));
+app.use('/bootstrap4', express.static('assets/bootstrap4-beta2'));
+
 
 // create date period
 var currentDate = new Date();
