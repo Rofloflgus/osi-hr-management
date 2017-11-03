@@ -596,9 +596,9 @@ app.post('/edit-goal', function(req, resp) {
     connection.connect(function(err) {
         dbRequest.input('g_id', req.body.g_id);
         dbRequest.input('goal', req.body.gs_goal);
-        dbRequest.query('UPDATE goals SET goal = @goal Output Inserted.goal WHERE g_id = @g_id', function(err, result) {
+        dbRequest.query('INSERT INTO goals (g_id, goal) VALUES (@g_id, @goal)', function(err, result) {
             if(result !== undefined && result.rowsAffected.length > 0) {
-                resp.send({status: 'success', goal: result.recordset[0].goal})
+                resp.send({status: 'success', goal: result.recordset[0].goal});
             } else {
                 console.log(err);
                 resp.send({status: 'fail'});
